@@ -22,7 +22,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72"  href="<%= asset_path('ico/apple-touch-icon-72-precomposed.png') %>">
     <link rel="apple-touch-icon-precomposed"  href="<%= asset_path('ico/apple-touch-icon-57-precomposed.png') %>">
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-  <script src="<%= asset_path('application.js') %>"></script>
     <style>
        a:hover{
            color: #FFF;
@@ -126,12 +125,12 @@
             </div>
         </div>
     </footer><!--/#footer-->
-    <script src="../assets/bootstrap.min.js"></script>
-    <script src="../assets/jquery.prettyPhoto.js"></script>
-    <script src="../assets/jquery.isotope.min.js"></script>
-    <script src="../assets/main.js"></script>
-    <script src="../assets/wow.min.js"></script>
-    <script src="../assets/global.js"></script>
+    <script src="<%= asset_path('bootstrap.min.js') %>"></script>
+    <script src="<%= asset_path('jquery.prettyPhoto.js') %>"></script>
+    <script src="<%= asset_path('jquery.isotope.min.js') %>"></script>
+    <script src="<%= asset_path('main.js') %>"></script>
+    <script src="<%= asset_path('wow.min.js') %>"></script>
+    <script src="<%= asset_path('global.js') %>"></script>
 </body>
 </body>
 </html>
