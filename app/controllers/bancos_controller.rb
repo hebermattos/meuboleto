@@ -4,7 +4,8 @@ class BancosController < ApplicationController
   before_action :set_vars 
 
   def index    
-    @bancos = Banco.where(usuario_id_id: @usuario_id) 
+    @bancos = Banco.where(usuario_id_id: @usuario_id)
+    @bancos
   end
 
   def show

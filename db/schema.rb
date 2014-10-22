@@ -16,6 +16,20 @@ ActiveRecord::Schema.define(version: 20141022000342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bancos", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "carteira"
+    t.string   "cedente"
+    t.string   "DocumentoCedente"
+    t.integer  "usuario_id_id"
+    t.string   "nome"
+    t.string   "conta"
+    t.string   "agencia"
+  end
+
+  add_index "bancos", ["usuario_id_id"], name: "index_bancos_on_usuario_id_id", using: :btree
+
   create_table "boleto_gerados", force: true do |t|
     t.string   "sacado"
     t.string   "sacadoDocumento"
