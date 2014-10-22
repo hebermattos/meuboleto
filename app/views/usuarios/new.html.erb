@@ -1,0 +1,37 @@
+<div class="container-fluid conteudo-centro">
+  <%= form_for @usuario,  url: {action: "create"},:html => {:class => 'form-horizontal', 'role' => 'form'}  do |f| %>
+      <% @usuario.errors.full_messages.each do |erro| %>
+          <p><%= erro %></p>
+      <% end %>
+      <br>
+      <% if flash[:alert] %>
+          <div class='alert alert-danger' role="alert"><b><%= flash[:alert] %></b></div>
+      <% end %>
+      <% if flash[:notice] %>
+          <div class='alert alert-success' role="alert"><b><%= flash[:notice] %></b></div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :nome %>
+        <%= f.text_field :nome %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :senha %>
+        <%= f.password_field :senha %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Confirmação %>
+        <input type="password" id="usuario_confirmacao" name="usuario[confirmacao]">
+      </div>
+      <div class="form-group">
+        <%= f.label :plano %>
+        <%= collection_select(:usuario, :plano_id, Plano.all, :id, :nome) %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Criar usuário" %>
+      </div>
+  <% end %>
+</div>

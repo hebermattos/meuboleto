@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valor: 
+  banco: 
+  sacado: 
+  sacado_documento: 
+  sacado_endereco: MyString
+
+two:
+  valor: 
+  banco: 
+  sacado: 
+  sacado_documento: 
+  sacado_endereco: MyString

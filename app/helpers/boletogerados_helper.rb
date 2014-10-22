@@ -1,0 +1,2 @@
+module BoletogeradosHelper
+end

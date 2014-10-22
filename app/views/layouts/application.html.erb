@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="boleto cobranca banco">
+    <meta name="heber.mattos" content="">
+    <title>Meu boleto</title>
+    <!-- core CSS -->
+    <link href="../assets/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/animate.min.css" rel="stylesheet">
+    <link href="../assets/prettyPhoto.css" rel="stylesheet">
+    <link href="../assets/main.css" rel="stylesheet">
+    <link href="../assets/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="../assets/html5shiv.js"></script>
+    <script src="../assets/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="../assets/assetsfavicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href=../"assets/apple-touch-icon-57-precomposed.png">
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <script src="../assets/jquery.js"></script>
+    <style>
+       a:hover{
+           color: #FFF;
+       }
+    </style>
+</head><!--/head-->
+<body class="homepage">
+    <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div><p><a style="" href="mailto:contato@meuboleeto.net">contato@meuboleto.net</a></p></div>
+                    </div>
+                  <div class="col-sm-2">
+                    <% if session[:nome]  %>
+                        <p class="top-number">Bem vindo <%= session[:nome].to_s  %>!</p>
+                    <% end %>
+                  </div>
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="../assets/logo.png" style="width: 64px" alt="logo"></a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Documentação da API</a></li>
+                        <li><a href="#">Bancos suportados</a></li>
+                      <% if session[:nome]  %>
+                          <li><%= link_to "Meus dados", :controller=> "usuarios", :action=> "show", :id=> session[:id] %></li>
+                          <li><%= link_to "Sair", :controller=> "logins", :action=> "destroy"  %></li>
+                      <% else %>
+                         <li><a href="#">Cadastre-se</a></li>
+                        <li><%= link_to "Login", :controller=> "logins" %></li>
+                      <% end %>
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+    <div id="conteudo">
+      <%= yield %>
+    </div>
+    <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-6 center">
+                    <div class="widget">
+                        <h3>EMPRESA</h3>
+                        <ul>
+                            <li><a href="#">Sobre nós</a></li>
+                            <li><a href="#">Copyright</a></li>
+                            <li><a href="#">Termos de uso</a></li>
+                            <li><a href="#">Poplitica de privacidade</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+                <div class="col-md-6 center">
+                    <div class="widget">
+                        <h3>SUPORTE</h3>
+                        <ul>
+                            <li><a href="#">Dúvidas frequentes</a></li>
+                            <li><a href="#">Email</a></li>
+                            <li><a href="#">Forum</a></li>
+                            <li><a href="#">Documentation</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2014 <i>meuboleto.net</i>  Todos os direitos reservados.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    <script src="../assets/bootstrap.min.js"></script>
+    <script src="../assets/jquery.prettyPhoto.js"></script>
+    <script src="../assets/jquery.isotope.min.js"></script>
+    <script src="../assets/main.js"></script>
+    <script src="../assets/wow.min.js"></script>
+    <script src="../assets/wow.min.js"></script>
+    <script src="../assets/wow.min.js"></script>
+    <script src="../assets/global.js"></script>
+</body>
+</body>
+</html>

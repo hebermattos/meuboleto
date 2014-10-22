@@ -1,0 +1,21 @@
+<div class="container-fluid conteudo-centro">
+  <% if flash[:alert] %>
+      <div class='alert alert-danger container' role="alert"><b><%= flash[:alert] %></b></div>
+  <% end %>
+    <%= form_for @login, url: {action: "create"}, html: {class:"form-horizontal"}  do |f| %>
+    <div class="form-group">
+        <%= f.label :name, 'Email' %>
+        <%= f.text_field :email %>
+    </div>
+    <div class="form-group">
+        <%= f.label :name, 'Senha' %>
+        <%= f.password_field :senha %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Login" %>
+    </div>
+    <div class="form-group">
+        <%= link_to "Cadestre-se!", {controller: "usuarios", action: "new"}, class: "link-centro" %>
+    </div>
+    <% end %>
+</div>

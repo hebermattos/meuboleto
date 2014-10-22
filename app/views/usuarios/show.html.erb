@@ -1,0 +1,31 @@
+<div class="container-fluid conteudo-centro">
+  <% if flash[:notice] %>
+      <div class='alert alert-success container' role="alert"><b><%= flash[:notice] %></b></div>
+  <% end %>
+  <%= form_for @usuario,  url: {action: "update"}, html: { method:"patch", class:"form-horizontal"}  do |f| %>
+      <% @usuario.errors.full_messages.each do |erro| %>
+          <p><%= erro %></p>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :nome %>
+        <%= f.text_field :nome %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="form-group">
+        <%= f.label :plano %>
+        <%= collection_select(:usuario, :plano_id, Plano.all, :id, :nome) %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Alterar dados" %>
+      </div>
+      <div class="form-group">
+        <%= link_to "Alterar senha", controller: 'senhas', id: @usuario.id %>
+      </div>
+      <div class="form-group">
+        <%= link_to "Configurar bancos", controller: "bancos" %>
+      </div>
+  <% end %>
+</div>

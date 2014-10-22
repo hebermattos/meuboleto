@@ -1,0 +1,24 @@
+<div class="container-fluid conteudo-centro">
+  <% if flash[:notice] %>
+      <div class='alert alert-success container' role="alert"><b><%= flash[:notice] %></b></div>
+  <% end %>
+  <% if flash[:alert] %>
+      <div class='alert alert-danger container' role="alert"><b><%= flash[:alert] %></b></div>
+  <% end %>
+  <%= form_for @usuario,  url: { action: "update"}, html: {class:"form-horizontal", method:"POST"}  do |f| %>
+      <% @usuario.errors.full_messages.each do |erro| %>
+          <p><%= erro %></p>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :senha %>
+        <input type="password" id="usuario_senha" name="usuario[senha]">
+      </div>
+      <div class="form-group">
+        <%= f.label :Confirmação %>
+        <input type="password" id="usuario_confirmacao" name="usuario[confirmacao]">
+      </div>
+      <div class="form-group">
+        <%= f.submit "Alterar senha" %>
+      </div>
+  <% end %>
+</div>

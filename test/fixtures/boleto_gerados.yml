@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sacado: MyString
+  sacadoDocumento: MyString
+  valor: 9.99
+  sacadoEndereco: 
+  dataDocumento: 2014-10-11 15:46:16
+  diasVencimento: 1
+  banco_id_id: 
+
+two:
+  sacado: MyString
+  sacadoDocumento: MyString
+  valor: 9.99
+  sacadoEndereco: 
+  dataDocumento: 2014-10-11 15:46:16
+  diasVencimento: 1
+  banco_id_id: 

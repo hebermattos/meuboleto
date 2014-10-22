@@ -1,0 +1,43 @@
+<Div class="container-fluid conteudo-centro">
+  <%= form_for @banco,  url: {action: "create"}, html: {class: "form-horizontal", role: "form"}  do |f| %>
+      <% @banco.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :nome %>
+        <%= f.text_field :nome %>
+      </div>
+      <div class="form-group">
+        <%= f.label :banco %>
+        <select name="banco[banco]">
+          <option value="">Selecione o banco</option>
+          <option value="bb">Banco do brasil</option>
+          <option value="itau">Itaú</option>
+          <option value="bradesco">Bradesco</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <%= f.label :agencia %>
+        <%= f.text_field :agencia %>
+      </div>
+      <div class="form-group">
+        <%= f.label :conta %>
+        <%= f.text_field :conta %>
+      </div>
+      <div class="form-group">
+        <%= f.label :carteira %>
+        <%= f.text_field :carteira %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cedente %>
+        <%= f.text_field :cedente %>
+      </div>
+      <div class="form-group">
+        <label for="banco_DocumentoCedente">Documento do cedente</label>
+        <%= f.text_field :DocumentoCedente %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Novo banco" %>
+      </div>
+  <% end %>
+</Div>

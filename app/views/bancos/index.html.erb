@@ -1,0 +1,40 @@
+<div class="container">
+    <br>
+    <% if flash[:alert] %>
+        <div class='alert alert-danger' role="alert"><b><%= flash[:alert] %></b></div>
+    <% end %>
+    <% if flash[:notice] %>
+        <div class='alert alert-success' role="alert"><b><%= flash[:notice] %></b></div>
+    <% end %>
+  <h2>Configurações</h2>
+  <br><br>
+  <%= link_to 'Nova configuração', :controller=> 'bancos', :action=> 'new' %>
+  <br><br>
+<table class="table table-striped">
+  <% if @bancos.empty? %>
+      <tr>
+        <td><b>Nenhuma configuração cadastrada</b></td>
+      </tr>
+  <% end%>
+  <% @bancos.each do |banco| %>
+      <tr>
+        <td><%= banco.nome %></td>
+        <td><%= banco.banco %></td>
+        <td><%= link_to "Ver/editar", controller: "bancos", action: "show", id: banco %></td>
+        <td><a href="#" class="deletar" data-val="<%= banco.id  %>">Apagar</a></td>
+      </tr>
+  <% end %>
+</table>
+</div>
+<br>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+      $(".deletar").click(function(){
+          $.ajax({
+              url: '/bancos/'+ $(this).attr("data-val"),
+              type: 'DELETE'
+          });
+      });
+  });
+</script>
+
