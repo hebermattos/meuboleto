@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="802127598">
+  <component name="DataSourceManagerImpl" format="xml" hash="2892657841">
     <data-source source="LOCAL" name="Rails boleto: development" uuid="db1f0e1e-ba82-4529-ba6d-f926627b98cc">
       <driver-ref>sqlite.xerial</driver-ref>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Boleto\db\development.sqlite3</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/boletodb</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfcbdfcedfc7dfc3dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails boleto: production" uuid="a46f962b-001d-4ca9-8f15-fe6f0ceeaf95">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:dagr6ntkr5t803</jdbc-url>
+      <user-name>ppjtrauxsrkbpf</user-name>
+      <user-password>dfc9dfc2dfd2dff0df9cdf9cdf9adf99dfdbdfc9dfdedfc6dfc9dfecdfc0dfe9dfecdfecdfe8dfc2dfe5dfc5dfebdfd0dffedfc7</user-password>
       <libraries />
     </data-source>
   </component>

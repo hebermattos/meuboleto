@@ -13,8 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20141022000342) do
 
-# Could not dump table "bancos" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "boleto_gerados", force: true do |t|
     t.string   "sacado"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141022000342) do
     t.datetime "updated_at"
   end
 
-  add_index "boleto_gerados", ["banco_id_id"], name: "index_boleto_gerados_on_banco_id_id"
+  add_index "boleto_gerados", ["banco_id_id"], name: "index_boleto_gerados_on_banco_id_id", using: :btree
 
   create_table "boletogerados", force: true do |t|
     t.decimal  "valor"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20141022000342) do
     t.datetime "updated_at"
   end
 
-  add_index "boletogerados", ["banco_id"], name: "index_boletogerados_on_banco_id"
-  add_index "boletogerados", ["usuario_id"], name: "index_boletogerados_on_usuario_id"
+  add_index "boletogerados", ["banco_id"], name: "index_boletogerados_on_banco_id", using: :btree
+  add_index "boletogerados", ["usuario_id"], name: "index_boletogerados_on_usuario_id", using: :btree
 
   create_table "planos", force: true do |t|
     t.string   "nome"
