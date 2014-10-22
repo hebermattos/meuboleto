@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails_12factor', group: :production
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
