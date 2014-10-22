@@ -21,6 +21,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= asset_path('ico/apple-touch-icon-144-precomposed.png') %>">
     <link rel="apple-touch-icon-precomposed" sizes="72x72"  href="<%= asset_path('ico/apple-touch-icon-72-precomposed.png') %>">
     <link rel="apple-touch-icon-precomposed"  href="<%= asset_path('ico/apple-touch-icon-57-precomposed.png') %>">
+  <script src="<%= asset_path('jquery.min.js') %>"></script>
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
     <style>
        a:hover{
