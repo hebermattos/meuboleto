@@ -53,6 +53,6 @@ class BancosController < ApplicationController
     end
 
     def banco_params
-      params.require(:banco).permit(:nome,:banco, :agencia,:conta,:cedente,:carteira,:DocumentoCedente)
+      params.require(:banco).permit(:nome,:banconome, :agencia,:conta,:cedente,:carteira,:DocumentoCedente)
     end
 end

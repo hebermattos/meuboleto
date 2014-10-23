@@ -19,7 +19,7 @@
   <% @bancos.each do |banco| %>
       <tr>
         <td><%= banco.nome %></td>
-        <td><%= banco.banco %></td>
+        <td><%= banco.banconome %></td>
         <td><%= link_to "Ver/editar", controller: "bancos", action: "show", id: banco %></td>
         <td><a href="#" class="deletar" data-val="<%= banco.id  %>">Apagar</a></td>
       </tr>
