@@ -61,7 +61,7 @@ class BoletogeradosController < ApplicationController
     @banco = Banco.find_by_banconome params[:boleto][:banconome]
     if @banco.nil?
       respond_to do |format|
-        format.json { render :json => "configuracao de banco não encontrada. bancos: " + Banco.all.to_s , :status => '400' }
+        format.json { render :json => "configuracao de banco não encontrada. configuracoes disponiveis: " + Banco.pluck(:banconome).join(", ") , :status => '400' }
       end
     else
     @boleto = Boletogerado.create(boleto_params)
