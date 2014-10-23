@@ -63,7 +63,7 @@ class BoletogeradosController < ApplicationController
       respond_to do |format|
         format.json { render :json => "configuracao de banco não encontrada" }
       end
-    end
+    else
     @boleto = Boletogerado.create(boleto_params)
     @boleto.usuario_id = @usuario.id
     @boleto.banco_id = @banco.id
@@ -81,7 +81,8 @@ class BoletogeradosController < ApplicationController
       respond_to do |format|
         format.json { render :json => "Configuração não encontrada", :status => '400' }
       end
-     end
+    end
+    end
   end
 
   def get
