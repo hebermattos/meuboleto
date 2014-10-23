@@ -23,7 +23,9 @@ class UsuariosController < ApplicationController
       if !@usuario.save
         render :new
       else
-        redirect_to action: "show", id: @usuario.id
+        session[:id] = @usuario.id
+        session[:nome] = @usuario.nome
+        redirect_to root_path
       end
     end
   end

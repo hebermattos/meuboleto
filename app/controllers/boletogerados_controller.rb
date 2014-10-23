@@ -9,9 +9,7 @@ class BoletogeradosController < ApplicationController
   def show
     @boleto_banco = Boletogerado.find(params[:id])
 
-    RGhost::Config::GS[:path]="C:\\Boleto\\gswin64c.exe"
-
-    banco = @boleto_banco.banco.banco.to_sym
+    banco = @boleto_banco.banco.banconome.to_sym
 
     @boleto = case banco
                 when :itau then Brcobranca::Boleto::Itau.new
@@ -60,9 +58,15 @@ class BoletogeradosController < ApplicationController
   end
 
   def create
+    @banco = Banco.find_by_banconome params[:boleto][:banconome]
+    if @banco.nil?
+      respond_to do |format|
+        format.json { render :json => "configuracao de banco não encontrada" }
+      end
+    end
     @boleto = Boletogerado.create(boleto_params)
     @boleto.usuario_id = @usuario.id
-    @banco = Banco.find_by(usuario_id_id: @usuario.id, id: @boleto.banco_id)
+    @boleto.banco_id = @banco.id
     if @banco
       if @boleto.save
       respond_to do |format|
@@ -96,7 +100,7 @@ class BoletogeradosController < ApplicationController
 
   private
   def boleto_params
-    params.require(:boleto).permit(:valor,:banco_id,:sacado,:sacado_endereco, :sacado_documento)
+    params.require(:boleto).permit(:valor,:sacado,:sacado_endereco, :sacado_documento)
   end
 
   def autenticar
