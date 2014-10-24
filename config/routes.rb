@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'boletos/' => 'boletogerados#getall'
   get 'boletos/:id' => 'boletogerados#get'
   get 'meuboleto/:id' => 'boletogerados#show'
+  get 'api/documentacao' => 'api#documentacao'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

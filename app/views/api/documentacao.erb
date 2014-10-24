@@ -1,0 +1,54 @@
+<div class="container">
+<div class="row col-md-12 " style="min-height: 300px">
+  <h3>AUTENTICACAO</h3>
+  <p>A API utiliza <i>basic autentication</i>, ou seja, você deve passar no header "Authorization" da requisição</p>
+  <p>o seu email de cadastro concatenado com ":" e sua senha no formato base64</p>
+  <p>ex: email=> joao@email.com , senha=> 123456 HEADER: am9hb0BlbWFpbC5jb206MTIzNDU2 (joao@email.com:123456 na base64)</p>
+    <pre>{
+    Authorization: Basic am9hb0BlbWFpbC5jb206MTIzNDU2=
+    Content-Type: Application/json
+}</pre>
+  <h3>RETORNO</h3>
+  <p>exemplo do objeto de retorno (exceto a geração do boleto em PDF):</p>
+  <pre>{
+    "id": 14,
+    "valor": "12.0",
+    "sacado": "nome",
+    "sacado_documento": "documento",
+    "sacado_endereco": "endereco",
+    "banco_id": 2,
+    "usuario_id": 5,
+    "created_at": "2014-10-24T01:31:20.707Z",
+    "updated_at": "2014-10-24T01:31:20.707Z"
+}
+</pre>
+  <h3>CRIAÇÃO DE BOLETOS</h3>
+  <p>método: <b>POST</b></p>
+  <p>URL: https://meuboleto.herokuapp.com/boletos</p>
+  <p>parâmetros:</p>
+  <pre>{
+    "boleto": {
+        "valor" : "12",
+        "sacado": "nome",
+        "sacado_endereco": "endereco",
+        "sacado_documento": "documento",
+        "configuracao": "bb"
+    }
+ </pre>
+  <p></p>
+  <h3>CONSULTA DE BOLETOS CRIADOS</h3>
+  <p>método: <b>GET</b></p>
+  <p>URL: https://meuboleto.herokuapp.com/boletos?data=dd-mm-aaaa</p>
+  <pre>
+    Retorna todos boleros gerados em determinada data (UTC)
+    <i>Ex: https://meuboleto.herokuapp.com/boletos?data=12-10-2012</i>
+  </pre>
+  <p>URL: https://meuboleto.herokuapp.com/id</p>
+  <pre>
+    Retorna um boleto especifico pelo Id
+    <i>Ex: https://meuboleto.herokuapp.com/boletos/32</i>
+  </pre>
+  <h3>GERAÇÃO DE BOLETOS</h3>
+  <p></p>
+</div>
+</div>

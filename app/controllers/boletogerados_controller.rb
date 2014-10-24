@@ -93,7 +93,8 @@ class BoletogeradosController < ApplicationController
   end
 
   def getall
-    @boletos = Boletogerado.where(usuario_id: @usuario.id)
+    data = Date.strptime(params[:data].to_s, "%d-%m-%Y")
+    @boletos = Boletogerado.where(usuario_id: @usuario.id, created_at: (data)..(data + 23.hours + 59.minutes + 59.seconds) )
     respond_to do |format|
       format.json { render :json => @boletos }
     end

@@ -63,7 +63,7 @@
                     <ul class="nav navbar-nav">
                         <li><%= link_to "Home", root_path  %></li>
                         <li><a href="#">Sobre nós</a></li>
-                        <li><a href="#">Documentação da API</a></li>
+                        <li><a href="/api/documentacao">Documentação da API</a></li>
                         <li><a href="/bancos/suportados">Bancos suportados</a></li>
                       <% if session[:nome]  %>
                           <li><%= link_to "Meus dados", :controller=> "usuarios", :action=> "show", :id=> session[:id] %></li>
