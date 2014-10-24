@@ -19,9 +19,9 @@ class BoletogeradosController < ApplicationController
 
     @boleto.cedente = @boleto_banco.usuario.nome
     @boleto.documento_cedente = @boleto_banco.banco.DocumentoCedente
-    @boleto.sacado = params[:boleto][:sacado]
-    @boleto.sacado_documento = params[:boleto][:sacado_documento]
-    @boleto.valor = params[:boleto][:sacado]
+    @boleto.sacado = @boleto_banco.sacado
+    @boleto.sacado_documento = @boleto_banco.sacado_documento
+    @boleto.valor =  @boleto_banco.valor
     @boleto.agencia = @boleto_banco.banco.agencia
     @boleto.conta_corrente = @boleto_banco.banco.conta
     case banco
@@ -46,7 +46,7 @@ class BoletogeradosController < ApplicationController
     @boleto.instrucao1 = "Pagavel na rede bancaria ate a data de vencimento."
     @boleto.instrucao5 = "Apos vencimento pagavel somente nas agencias do banco referido"
     @boleto.instrucao6 = "ACRESCER R$ 3,00 REFERENTE AO BOLETO BANCARIO"
-    @boleto.sacado_endereco = params[:boleto][:sacado_endereco]
+    @boleto.sacado_endereco =  @boleto_banco.sacado_endereco
 
     headers['Content-Type']= "application/pdf"
 
