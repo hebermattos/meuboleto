@@ -42,7 +42,6 @@ class BoletogeradosController < ApplicationController
       else
         @boleto.convenio = "1238798"
         @boleto.numero_documento = Time.now.to_i.to_s
-        when :bb
     end
 
     @boleto.dias_vencimento = 5
