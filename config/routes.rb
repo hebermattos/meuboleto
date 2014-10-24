@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch 'usuarios/:id' => 'usuarios#update'
   get 'teste/:banco' => 'testes#gerar_boleto'
   get 'bancos/' => 'bancos#index'
+  get 'bancos/suportados' => 'bancos#bancos-suportados'
   get 'bancos/new' => 'bancos#new'
   get 'bancos/:id' => 'bancos#show'
   patch 'bancos/:id' => 'bancos#update'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   post 'bancos/' => 'bancos#create'
   get 'senhas/:id' => 'senhas#index'
   post 'senhas/update' => 'senhas#update'
-
   post 'boletos/' => 'boletogerados#create'
   get 'boletos/' => 'boletogerados#getall'
   get 'boletos/:id' => 'boletogerados#get'
