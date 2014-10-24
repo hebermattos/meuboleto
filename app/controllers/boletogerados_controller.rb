@@ -4,6 +4,7 @@ require 'rghost'
 
 class BoletogeradosController < ApplicationController
   before_action :autenticar, except: [:show]
+  skip_before_action :autenticar, only: [:testebb]
   skip_before_action :verify_authenticity_token
 
   def show
@@ -47,6 +48,32 @@ class BoletogeradosController < ApplicationController
     @boleto.instrucao5 = "Apos vencimento pagavel somente nas agencias do banco referido"
     @boleto.instrucao6 = "ACRESCER R$ 3,00 REFERENTE AO BOLETO BANCARIO"
     @boleto.sacado_endereco =  @boleto_banco.sacado_endereco
+
+    headers['Content-Type']= "application/pdf"
+
+    send_data @boleto.to(:pdf), :filename => "boleto_#{banco}.pdf"
+
+  end
+
+  def testebb
+
+    @boleto = Brcobranca::Boleto::BancoBrasil.new
+
+    @boleto.cedente = "nome do cedente"
+    @boleto.documento_cedente = "1234356789"
+    @boleto.sacado = "nome do sacado"
+    @boleto.sacado_documento = "123456789"
+    @boleto.valor =  "45.60"
+    @boleto.agencia = "1234"
+    @boleto.conta_corrente = "123456"
+    @boleto.convenio = "1238798"
+    @boleto.numero_documento = Time.now.to_i.to_s
+    @boleto.dias_vencimento = 5
+    @boleto.data_documento = "2008-02-01".to_date
+    @boleto.instrucao1 = "Pagavel na rede bancaria ate a data de vencimento."
+    @boleto.instrucao5 = "Apos vencimento pagavel somente nas agencias do banco referido"
+    @boleto.instrucao6 = "ACRESCER R$ 3,00 REFERENTE AO BOLETO BANCARIO"
+    @boleto.sacado_endereco =  "av. brasil 500"
 
     headers['Content-Type']= "application/pdf"
 
