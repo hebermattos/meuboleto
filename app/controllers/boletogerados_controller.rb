@@ -17,39 +17,40 @@ class BoletogeradosController < ApplicationController
                 when :bradesco then Brcobranca::Boleto::Bradesco.new
               end
 
-    @boleto.cedente = "Kivanio Barbosa"
-    @boleto.documento_cedente = "12345678912"
-    @boleto.sacado = "Claudio Pozzebom"
-    @boleto.sacado_documento = "12345678900"
-    @boleto.valor = 11135.00
-    @boleto.agencia = "4042"
-    @boleto.conta_corrente = "61900"
+    #:valor,:sacado,:sacado_endereco, :sacado_documento
 
+    @boleto.cedente =  @boleto_banco.usuario.nome
+    @boleto.documento_cedente = @boleto_banco.banco.DocumentoCedente
+    @boleto.sacado = params[:boleto][:sacado]
+    @boleto.sacado_documento = params[:boleto][:sacado_documento]
+    @boleto.valor = params[:boleto][:sacado]
+    @boleto.agencia = @boleto_banco.banco.agencia
+    @boleto.conta_corrente = @boleto_banco.banco.conta
+    Time.now.to_i
     case banco
       when :itau
         # ITAU
         # O que diferencia um tipo de boleto de outro, dentro do itau e o tipo de carteira utilizado.
         @boleto.convenio = "12345"
-        @boleto.numero_documento = "102008"
+        @boleto.numero_documento = Time.now.to_i.to_s
       when :bb
         # BB
         # O que diferencia um tipo de boleto de outro, dentro do Banco do Brasil e a quantidade de dígitos do convenio.
         @boleto.convenio = "1238798"
-        @boleto.numero_documento = "7777700168"
+        @boleto.numero_documento = Time.now.to_i.to_s
+      when :bb
       else
         @boleto.convenio = "1238798"
-        @boleto.numero_documento = "102008"
+        @boleto.numero_documento = Time.now.to_i.to_s
+        when :bb
     end
 
     @boleto.dias_vencimento = 5
     @boleto.data_documento = "2008-02-01".to_date
     @boleto.instrucao1 = "Pagavel na rede bancaria ate a data de vencimento."
-    @boleto.instrucao2 = "Juros de mora de 2.0% mensal(R$ 0,09 ao dia)"
-    @boleto.instrucao3 = "DESCONTO DE R$ 29,50 APOS 05/11/2006 ATE 15/11/2006"
-    @boleto.instrucao4 = "NaO RECEBER APoS 15/11/2006"
-    @boleto.instrucao5 = "Apos vencimento pagavel somente nas agencias do Banco do Brasil"
-    @boleto.instrucao6 = "ACRESCER R$ 4,00 REFERENTE AO BOLETO BANCARIO"
-    @boleto.sacado_endereco = "Av. Rubens de Mendonca, 157 - 78008-000 - Cuiaba/MT"
+    @boleto.instrucao5 = "Apos vencimento pagavel somente nas agencias do banco referido"
+    @boleto.instrucao6 = "ACRESCER R$ 3,00 REFERENTE AO BOLETO BANCARIO"
+    @boleto.sacado_endereco = params[:boleto][:sacado_endereco]
 
     headers['Content-Type']= "application/pdf"
 
