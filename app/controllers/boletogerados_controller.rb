@@ -17,16 +17,13 @@ class BoletogeradosController < ApplicationController
                 when :bradesco then Brcobranca::Boleto::Bradesco.new
               end
 
-    #:valor,:sacado,:sacado_endereco, :sacado_documento
-
-    @boleto.cedente =  @boleto_banco.usuario.nome
+    @boleto.cedente = @boleto_banco.usuario.nome
     @boleto.documento_cedente = @boleto_banco.banco.DocumentoCedente
     @boleto.sacado = params[:boleto][:sacado]
     @boleto.sacado_documento = params[:boleto][:sacado_documento]
     @boleto.valor = params[:boleto][:sacado]
     @boleto.agencia = @boleto_banco.banco.agencia
     @boleto.conta_corrente = @boleto_banco.banco.conta
-    Time.now.to_i
     case banco
       when :itau
         # ITAU
