@@ -1,4 +1,4 @@
-<div class="container-fluid conteudo-centro">
+<div class="container-fluid conteudo-centro" style="min-height: 700px">
   <%= form_for @usuario,  url: {action: "create"},:html => {:class => 'form-horizontal', 'role' => 'form'}  do |f| %>
       <% @usuario.errors.full_messages.each do |erro| %>
           <p><%= erro %></p>

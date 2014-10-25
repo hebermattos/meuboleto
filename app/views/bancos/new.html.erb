@@ -1,4 +1,4 @@
-<Div class="container-fluid conteudo-centro">
+<Div class="container-fluid conteudo-centro" style="min-height: 700px">
   <%= form_for @banco,  url: {action: "create"}, html: {class: "form-horizontal", role: "form"}  do |f| %>
       <% @banco.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
